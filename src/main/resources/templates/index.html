@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Home</title>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<td><b><u>Country</b></u></td>
+			</thead>
+			<tr th:each="country : ${countries}">
+				<td><a th:href="@{/view/{id}(id=${country.id})}" th:text="${country.name}"></a></td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<button><a th:href="@{/add}">ADD</a></button>
+	</body>     
+</html>

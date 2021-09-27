@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Edit Country</title>
+		<style type="text/css">
+			button {
+				padding: 10px;
+			}
+			span {
+				color: red;
+				font-style: italic;
+			}
+			form {
+				display: table;
+			}
+			form div {
+				display: table-row;
+			}
+			label, input, span {
+				display: table-cell;
+				margin: 5px;
+				text-align: left;		
+			}
+			input[type=text] {
+				width: 200px;
+				margin: 5px;
+			}
+		
+			form div div {
+				display: table-cell;
+			}
+		</style>
+	</head>
+	<body>
+		<div align="center">
+			<form action="#" th:action="@{/save}" th:object="${country}" method="post">
+				<div>
+					<label>ID:</label> 
+					<input type="text" th:field="*{id}" readonly="readonly"/><br>
+				</div>
+				
+				<div>
+					<label>Country:</label> 
+					<input type="text" th:field="*{name}" readonly="readonly"/><br>
+				</div>
+				
+				<div>
+					<label>Capital:</label> 
+					<input type="text" th:field="*{capital}" readonly="readonly"><br>
+				</div>
+				
+				<div>
+					<label>Population:</label> 
+					<input type="text" th:field="*{population}" /><br>
+					<span th:if="${#fields.hasErrors('population')}" th:errors="*{population}">Population error</span>
+				</div>
+				
+				<div>
+					<button type="submit">Save</button>
+				</div>
+			</form>
+	</div>
+	</body>
+</html>

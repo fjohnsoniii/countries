@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Add Country</title>
+		<style type="text/css">
+			button {
+				padding: 10px;
+			}
+			span {
+				color: red;
+				font-style: italic;
+			}
+			form {
+				display: table;
+			}
+			form div {
+				display: table-row;
+			}
+			label, input, span {
+				display: table-cell;
+				margin: 5px;
+				text-align: left;		
+			}
+			input[type=text] {
+				width: 200px;
+				margin: 5px;
+			}
+		
+			form div div {
+				display: table-cell;
+			}
+		</style>
+	</head>
+	<body>
+		<div align="center">
+			<h1>Add Country</h1>
+			<form action="#" th:action="@{/save}" method="post" th:object="${country}">
+				<div>
+					<label>ID:</label> 
+					<input type="text" th:field="*{id}"/><br>
+				</div>
+				
+				<div>
+					<label>Country:</label> 
+					<input type="text" th:field="*{name}" /><br>
+					<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</span>
+				</div>
+				
+				<div>
+					<label>Capital:</label> 
+					<input type="text" th:field="*{capital}" /><br>
+					<span th:if="${#fields.hasErrors('capital')}" th:errors="*{capital}">Capital error</span>
+				</div>
+				
+				<div>
+					<label>Population:</label> 
+					<input type="text" th:field="*{population}" /><br>
+					<span th:if="${#fields.hasErrors('population')}" th:errors="*{population}">Population error</span>
+				</div>
+				
+				<div>
+					<button type="submit">Save</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

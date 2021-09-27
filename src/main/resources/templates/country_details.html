@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Country Details</title>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<td><b><u>ID</b></u></td>
+				<td><b><u>Country</b></u></td>
+				<td><b><u>Capital</b></u></td>
+				<td><b><u>Population</b></u></td>
+			</thead>
+			<tr th:each="country : ${countries}">
+				<td th:text="${country.id}"></td>
+				<td th:text="${country.name}"></td>
+				<td th:text="${country.capital}"></td>
+				<td th:text="${country.population}"></td>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<td><button><a th:href="@{/edit/{id}(id=${country.id})}">EDIT</a></button>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<td><button><a th:href="@{/delete/{id}(id=${country.id})}">DELETE</a></button>
+			</tr>
+		</table>
+	</body>
+</html>
